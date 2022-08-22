@@ -5,9 +5,10 @@ set -ex -o pipefail
 
 # Link the repositories atmos config to /usr/local/etc/atmos to enable
 # repo specific atmos config in a location where it will be picked up.
-
+# Try to link atmos.yaml from rootfs and source directory. atmos.yaml in source directory will be used over atmos.yaml in rootfs if present.
 mkdir -p /usr/local/etc/atmos
-ln -sfTv /mnt/workspace/source/atmos.yaml /usr/local/etc/atmos/atmos.yaml
+test -f /mnt/workspace/source/rootfs/usr/local/etc/atmos/atmos.yaml && ln -sfTv /mnt/workspace/source/rootfs/usr/local/etc/atmos/atmos.yaml /usr/local/etc/atmos/atmos.yaml
+test -f /mnt/workspace/source/atmos.yaml && ln -sfTv /mnt/workspace/source/atmos.yaml /usr/local/etc/atmos/atmos.yaml
 
 # Link the default terraform binary to Spacelift's Terraform installation path of `/bin/terraform`.
 # Because the Terraform command is executed as just `terraform` by `atmos` (unless otherwise specified)
