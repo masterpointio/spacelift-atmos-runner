@@ -1,4 +1,4 @@
-export TARGET_DOCKER_REGISTRY=public.ecr.aws/w1j9e4y3
+export TARGET_DOCKER_REGISTRY=public.ecr.aws/masterpoint
 export IMAGE_NAME ?= spacelift-atmos-runner
 export DOCKER_IMAGE ?= $(IMAGE_NAME)
 export ECR_URI ?= $(TARGET_DOCKER_REGISTRY)/$(IMAGE_NAME)
