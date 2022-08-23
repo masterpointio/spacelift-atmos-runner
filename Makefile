@@ -44,4 +44,5 @@ run:
 ## Publish the toolbox image to our ECR repo
 publish: build
 	@export VERSION=$(shell git rev-parse --short HEAD); \
+		make docker/image/push TARGET_VERSION=$VERSION; \
 		make docker/image/push TARGET_VERSION=latest;
