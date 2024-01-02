@@ -3,12 +3,12 @@ FROM alpine:3.19 as deps
 
 # Install terraform
 ARG TF_1_VERSION=1.5.7 # last release under Mozilla Public License
-ARG ALPINE_VERSION=1.52.0
+ARG ATMOS_VERSION=1.52.0
 ARG TARGETARCH
 
 RUN apk add --no-cache wget unzip; \
     wget -q "https://releases.hashicorp.com/terraform/${TF_1_VERSION}/terraform_${TF_1_VERSION}_linux_${TARGETARCH}.zip"; \
-    wget -q -O atmos "https://github.com/cloudposse/atmos/releases/download/v1.52.0/atmos_1.52.0_linux_${TARGETARCH}"; \
+    wget -q -O atmos "https://github.com/cloudposse/atmos/releases/download/v${ATMOS_VERSION}/atmos_${ATMOS_VERSION}_linux_${TARGETARCH}"; \
     unzip "terraform_${TF_1_VERSION}_linux_${TARGETARCH}.zip"
 
 FROM alpine:3.19 as runner
