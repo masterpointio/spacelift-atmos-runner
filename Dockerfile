@@ -2,8 +2,8 @@
 FROM alpine:3.19 as deps
 
 # Install terraform
-ARG TF_1_VERSION=1.6.6 # last release under Mozilla Public License
-ARG ATMOS_VERSION=1.53.0
+ARG TF_1_VERSION=1.5.7 # last release under Mozilla Public License
+ARG ATMOS_VERSION=1.52.0
 ARG TARGETARCH
 
 RUN apk add --no-cache wget unzip && \
