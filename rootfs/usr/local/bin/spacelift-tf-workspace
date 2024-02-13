@@ -3,8 +3,6 @@
 # Add -x for troubleshooting
 set -ex -o pipefail
 
-tofu init -reconfigure
-
 echo "Selecting workspace..."
 echo "...with AWS_PROFILE=$AWS_PROFILE"
 echo "...with AWS_CONFIG_FILE=$AWS_CONFIG_FILE"
