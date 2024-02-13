@@ -1,7 +1,6 @@
 # syntax=docker/dockerfile:1
 FROM alpine:3.19 as deps
 
-# Install terraform
 ARG ATMOS_VERSION=1.60.0
 ARG TARGETARCH
 
