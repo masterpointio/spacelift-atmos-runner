@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 start_tailscale() {
 	# Start tailscaled with userspace tunneling - required for running in a container
