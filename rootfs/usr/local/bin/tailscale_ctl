@@ -1,0 +1,15 @@
+#!/bin/bash
+
+start_tailscale() {
+	# Start tailscaled with userspace tunneling - required for running in a container
+	tailscaled -tun userspace-networking &
+
+	tailscale up --authkey="$(sops --decrypt --extract '["tailscale_oauth_client_secret"]' config/secrets/global.yaml)" --advertise-tags tag:ci
+}
+
+stop_tailscale() {
+	tailscale down
+	tailscaled -cleanup
+}
+
+"$@"
