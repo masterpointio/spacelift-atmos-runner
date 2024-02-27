@@ -4,12 +4,13 @@ start_tailscale() {
 	# Start tailscaled with userspace tunneling - required for running in a container
 	tailscaled -tun userspace-networking &
 
-	tailscale up --authkey="$(sops --decrypt --extract '["tailscale_oauth_client_secret"]' config/secrets/global.yaml)" --advertise-tags tag:ci
+	authkey="$(sops --decrypt --extract '["tailscale_oauth_client_secret"]' /mnt/workspace/source/config/secrets/global.yaml)"
+	tailscale up --authkey="${authkey}" --advertise-tags tag:ci
 }
 
 stop_tailscale() {
 	tailscale down
-	tailscaled -cleanup
+	killall tailscaled
 }
 
 "$@"
